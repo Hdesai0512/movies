@@ -9,7 +9,7 @@ export default function CardSlider({data, title}) {
     const handleDirection = (direction) => {};
 
   return (
-    <Container className="flext column"
+    <Container className="flex column"
     onMouseEnter={() => setShowControls(true)}
     onMouseLeave={() => setShowControls(false)}
     >
@@ -23,10 +23,30 @@ export default function CardSlider({data, title}) {
         return <Card movieData={movie} index={index} key={movie.id} />
     })}
         </div>
+        <div className={`slider-action right ${!showControls ? "none" : ""} flex j-center a-center`}>
+                <AiOutlineRight onClick={()=> handleDirection("right")} />
+            </div>
     
     </div>
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+    gap: 1rem;
+    position: relative;
+    padding: 2rem 0;
+    h1{
+        margin-left: 50px;
+    }
+    .wrapper{
+        .slider{
+            width: max-content;
+            gap: 1rem;
+            transform: translateX(0px);
+            transition: 0.3s ease-in-out;
+            margin-left: 50px;
+        }
+    }
+
+`;
