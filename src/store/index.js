@@ -42,8 +42,9 @@ const getRawData = async (api,genres,paging) => {
         `${api}${paging ? `&page=${i}`: ""}`
         );
         createArrayFromRawData(results, moviesArray, genres);
+     }  
         return moviesArray
-    }
+
 }
 
 export const fetchMovies = createAsyncThunk("movie/trending", async({type},thunkApi) =>{
