@@ -8,10 +8,12 @@ import Navbar from '../components/Navbar';
 import Slider from '../components/Slider';
 import styled from 'styled-components';
 import NotAvailable from '../components/NotAvailable';
-export default function Movies() {
+import SelectGenre from '../components/SelectGenre';
+ function Movies() {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
     const genresLoaded = useSelector((state) => state.movie.genresLoaded);
+    const genres= useSelector((state) => state.movie.genres);
     const movies = useSelector((state) => state.movie.movies);
     const dispatch = useDispatch();
 
@@ -41,10 +43,10 @@ window.onscroll = () => {
         <Navbar isScrolled={isScrolled} />
    </div>
         <div className="data">
-            {
-                movies.length ? <Slider movies={movies} /> :
-                <NotAvailable />
-            }
+            <SelectGenre genres={genres} type="movie" />
+                {movies.length ? <Slider movies={movies} /> :
+                <NotAvailable />}
+            
         </div>
         </Container>
   
@@ -62,4 +64,6 @@ const Container = styled.div`
 }
 
 
-`
+`;
+
+export default Movies;

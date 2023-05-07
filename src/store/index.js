@@ -59,7 +59,18 @@ export const fetchMovies = createAsyncThunk("movie/trending", async({type},thunk
 } 
  );
     
-
+export const fetchDataByGenre = createAsyncThunk(
+    "movie/genre",
+    async({ genre, type}, thunkApi) =>{
+        const {
+            movie: { genres},
+        } = thunkApi.getState();
+        return getRawData(
+            `https://api.themoviedb.org/3/discover/${type}?api_key=3d39d6bfe362592e6aa293f01fbcf9b9&with_genres=${genre}`,
+      genres
+        );
+    }
+);
 
 const MovieSlice = createSlice({
     name: "Movies",
