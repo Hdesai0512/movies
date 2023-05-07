@@ -6,7 +6,10 @@ export default function CardSlider({data, title}) {
     const [showControls, setShowControls] = useState(false);
     const [sliderPosition, setSliderPosition] = useState(0);
     const listRef = useRef();
-    const handleDirection = (direction) => {};
+    const handleDirection = (direction) => {
+     //   (listRef, direction);
+        
+    };
 
   return (
     <Container className="flex column"
@@ -67,7 +70,7 @@ const Container = styled.div`
         }
         .right{
             right: 0;
-            
+
         }
         
     }
